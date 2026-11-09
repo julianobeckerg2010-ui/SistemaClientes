@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0c1428">
+    <meta name="description" content="SistemaClientes — painel de gerenciamento de clientes">
+    <title>SistemaClientes | Gestão de clientes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app">
+        <aside class="sidebar" id="sidebar">
+            <div class="brand">
+                <div class="brand-icon">S<span>+</span></div>
+                <div><strong>Sistema<span>Clientes</span></strong><small>PAINEL ADMINISTRATIVO</small></div>
+            </div>
+            <div class="side-label">MENU PRINCIPAL</div>
+            <nav><button class="nav-item active" data-page="dashboard"><span>▦</span> Visão geral</button><button
+                    class="nav-item" data-page="clientes"><span>♙</span> Clientes <b
+                        id="sideCount">0</b></button><button class="nav-item" data-page="relatorios"><span>▥</span>
+                    Relatórios</button></nav>
+            <div class="sidebar-bottom">
+                <div class="side-help">
+                    <div class="help-icon">✦</div><strong>Seu negócio, organizado.</strong>
+                    <p>Gerencie seus contatos de forma simples e rápida.</p>
+                </div>
+                <div class="profile">
+                    <div class="avatar">SC</div>
+                    <div><strong>Administrador</strong><small>Conta local</small></div><span class="online"></span>
+                </div>
+            </div>
+        </aside>
+        <div class="main">
+            <header class="topbar"><button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
+                <div class="crumb">Painel <span>/</span> <strong id="crumb">Visão geral</strong></div>
+                <div class="top-right"><span class="today" id="today"></span><span class="top-avatar">SC</span></div>
+            </header>
+            <main class="content">
+                <section id="dashboard" class="page active">
+                    <div class="heading">
+                        <div>
+                            <div class="eyebrow">PAINEL DE CONTROLE</div>
+                            <h1>Visão geral <span class="wave">✳</span></h1>
+                            <p>Acompanhe seus clientes e mantenha tudo organizado.</p>
+                        </div><button class="btn primary add-button">＋ Novo cliente</button>
+                    </div>
+                    <div class="hero">
+                        <div>
+                            <div class="hero-pill"><span class="dot"></span> SISTEMA ATIVO</div>
+                            <h2>Uma gestão mais simples<br>começa por aqui.</h2>
+                            <p>Tenha as informações dos seus clientes em um só lugar, com praticidade e organização.</p>
+                            <button class="hero-btn" id="heroButton">Gerenciar clientes <span>↗</span></button>
+                        </div>
+                        <div class="hero-art">
+                            <div class="art-card back">
+                                <div class="art-line"></div>
+                                <div class="art-line short"></div>
+                                <div class="art-line"></div>
+                            </div>
+                            <div class="art-card front">
+                                <div class="art-top"><span>◉</span><span>•••</span></div>
+                                <div class="art-chart"><i style="height:35%"></i><i style="height:60%"></i><i
+                                        style="height:48%"></i><i style="height:85%"></i><i style="height:70%"></i>
+                                </div>
+                                <div class="art-bottom">↗ Crescimento constante</div>
+                            </div>
+                            <div class="art-bubble">✓</div>
+                        </div>
+                    </div>
+                    <div class="section-title">
+                        <h3>Resumo do sistema</h3><span>Atualizado em tempo real</span>
+                    </div>
+                    <div class="stats">
+                        <article class="stat">
+                            <div class="stat-top"><span class="stat-icon blue">♙</span><span
+                                    class="stat-tag">Total</span></div><strong id="statTotal">0</strong><span>Clientes
+                                cadastrados</span>
+                            <div class="stat-foot">↗ Base de contatos</div>
+                        </article>
+                        <article class="stat">
+                            <div class="stat-top"><span class="stat-icon purple">✉</span><span
+                                    class="stat-tag">Contato</span></div><strong id="statEmail">0</strong><span>Clientes
+                                com e-mail</span>
+                            <div class="stat-foot">✓ Informações disponíveis</div>
+                        </article>
+                        <article class="stat">
+                            <div class="stat-top"><span class="stat-icon green">＋</span><span
+                                    class="stat-tag">Recentes</span></div><strong
+                                id="statRecent">0</strong><span>Cadastros nos últimos 7 dias</span>
+                            <div class="stat-foot">◷ Última semana</div>
+                        </article>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-head">
+                            <div>
+                                <h3>Clientes recentes</h3>
+                                <p>Últimos registros adicionados ao sistema</p>
+                            </div><button class="btn subtle" id="viewAll">Ver todos ↗</button>
+                        </div>
+                        <div id="recentTable"></div>
+                    </div>
+                </section>
+                <section id="clientes" class="page">
+                    <div class="heading">
+                        <div>
+                            <div class="eyebrow">GERENCIAMENTO</div>
+                            <h1>Meus clientes</h1>
+                            <p>Cadastre, pesquise e organize sua lista de contatos.</p>
+                        </div><button class="btn primary add-button">＋ Novo cliente</button>
+                    </div>
+                    <div class="panel clients-panel">
+                        <div class="panel-head">
+                            <div>
+                                <h3>Lista de clientes <span class="count-pill" id="listCount">0</span></h3>
+                                <p>Todos os seus contatos em um só lugar</p>
+                            </div>
+                            <div class="search-wrap"><span>⌕</span><input id="search" type="search"
+                                    placeholder="Buscar nome, e-mail ou telefone..." aria-label="Buscar clientes"></div>
+                        </div>
+                        <div id="clientsTable"></div>
+                    </div>
+                </section>
+                <section id="relatorios" class="page">
+                    <div class="heading">
+                        <div>
+                            <div class="eyebrow">ANÁLISE</div>
+                            <h1>Relatórios</h1>
+                            <p>Um resumo dos dados cadastrados no sistema.</p>
+                        </div><button class="btn subtle" id="exportCsv">↓ Exportar CSV</button>
+                    </div>
+                    <div class="stats">
+                        <article class="stat">
+                            <div class="stat-top"><span class="stat-icon blue">♙</span></div><strong
+                                id="reportTotal">0</strong><span>Clientes cadastrados</span>
+                        </article>
+                        <article class="stat">
+                            <div class="stat-top"><span class="stat-icon purple">✉</span></div><strong
+                                id="reportEmail">0</strong><span>Clientes com e-mail</span>
+                        </article>
+                        <article class="stat">
+                            <div class="stat-top"><span class="stat-icon green">＋</span></div><strong
+                                id="reportRecent">0</strong><span>Novos nesta semana</span>
+                        </article>
+                    </div>
+                    <div class="panel report-panel">
+                        <div class="report-icon">▥</div>
+                        <h3>Seus dados, em um só lugar</h3>
+                        <p>Use o botão Exportar CSV para salvar uma cópia da lista de clientes. Os dados são armazenados
+                            somente neste navegador.</p><button class="btn primary" id="reportClients">Ver clientes
+                            ↗</button>
+                    </div>
+                </section>
+            </main>
+            <footer>© <span id="year"></span> SistemaClientes <span>•</span> Projeto Web UC14</footer>
+        </div>
+    </div>
+    <div class="overlay" id="overlay" hidden>
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <div class="modal-head">
+                <div>
+                    <div class="eyebrow">CADASTRO DE CLIENTES</div>
+                    <h2 id="modalTitle">Novo cliente</h2>
+                    <p>Preencha as informações abaixo.</p>
+                </div><button class="close" id="closeModal" aria-label="Fechar">×</button>
+            </div>
+            <form id="clientForm">
+                <div class="field"><label for="nome">Nome completo <em>*</em></label><input id="nome" name="nome"
+                        maxlength="100" placeholder="Ex.: Maria Oliveira" required></div>
+                <div class="field"><label for="email">E-mail <em>*</em></label><input id="email" name="email"
+                        type="email" maxlength="120" placeholder="Ex.: maria@email.com" required></div>
+                <div class="field"><label for="telefone">Telefone</label><input id="telefone" name="telefone"
+                        maxlength="30" placeholder="Ex.: (51) 99999-9999"></div>
+                <div class="field"><label for="cidade">Cidade</label><input id="cidade" name="cidade" maxlength="80"
+                        placeholder="Ex.: Novo Hamburgo"></div>
+                <p class="form-error" id="formError" aria-live="polite"></p>
+                <div class="modal-actions"><button type="button" class="btn subtle"
+                        id="cancelModal">Cancelar</button><button type="submit" class="btn primary"
+                        id="saveButton">Salvar cliente</button></div>
+            </form>
+        </div>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="script.js"></script>
+</body>
+
+</html>
