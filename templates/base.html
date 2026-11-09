@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Sistema de cadastro e gerenciamento de clientes">
+  <title>{% block titulo %}Clientes{% endblock %} | Gestão Fácil</title>
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="marca" href="{{ url_for('inicio') }}"><span class="marca-icone">G</span> Gestão<span>Fácil</span></a>
+    <div class="nav-label">MENU PRINCIPAL</div>
+    <nav aria-label="Menu principal">
+      <a href="{{ url_for('inicio') }}" class="{% if request.endpoint=='inicio' %}ativo{% endif %}">⌂ <span>Visão geral</span></a>
+      <a href="{{ url_for('consulta') }}" class="{% if request.endpoint in ['consulta','editar'] %}ativo{% endif %}">☷ <span>Clientes</span></a>
+      <a href="{{ url_for('cadastro') }}" class="{% if request.endpoint=='cadastro' %}ativo{% endif %}">＋ <span>Novo cadastro</span></a>
+    </nav>
+    <div class="sidebar-rodape">Sistema de Cadastro<br><small>Projeto UC14 • v1.0</small></div>
+  </aside>
+  <main class="principal">
+    <header class="topo"><span>PAINEL DE GERENCIAMENTO</span><div class="avatar">GF</div></header>
+    <div class="conteudo">
+      {% with mensagens=get_flashed_messages(with_categories=true) %}
+        {% for categoria,mensagem in mensagens %}<div role="alert" class="alerta {{ categoria }}">{{ mensagem }}</div>{% endfor %}
+      {% endwith %}
+      {% block conteudo %}{% endblock %}
+    </div>
+  </main>
+  <script src="{{ url_for('static',filename='js/script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+{% extends 'base.html' %}{% block titulo %}Editar cliente{% endblock %}{% block conteudo %}
+<div class="cabecalho"><div><div class="sobretitulo">CLIENTES / EDITAR</div><h1>Editar cliente</h1><p>Atualize as informações do cadastro.</p></div></div>
+<div class="painel formulario"><h2>Dados do cliente</h2><form method="post"><label for="nome">Nome completo</label><input id="nome" name="nome" maxlength="100" required value="{{ cliente.nome }}"><label for="email">E-mail</label><input id="email" name="email" type="email" maxlength="150" required value="{{ cliente.email }}"><label for="telefone">Telefone</label><input id="telefone" name="telefone" maxlength="30" required value="{{ cliente.telefone }}"><div class="acoes"><a class="botao secundario" href="{{ url_for('consulta') }}">Cancelar</a><button class="botao" type="submit">Salvar alterações</button></div></form></div>
+{% endblock %}
